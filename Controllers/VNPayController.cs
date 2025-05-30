@@ -102,12 +102,14 @@ namespace PharmaDistiPro.Controllers
                     var transactionNo = Request.Query["vnp_TransactionNo"];
                     var txnRef = Request.Query["vnp_TxnRef"];
                     var resultDescription = $"{paymentResult.PaymentResponse.Description}. {paymentResult.TransactionStatus.Description}.";
+                    var baseUrl = "http://localhost:5173"; // URL frontend public của bạn
+
 
                     if (paymentResult.IsSuccess)
                     {
                         
 
-                          var Url = $"http://localhost:5173/payment/success?orderId={txnRef}";
+                          var Url = $"{baseUrl}/payment/success?orderId={txnRef}";
                     
                         Console.WriteLine($"✅ Callback thành công:");
                         Console.WriteLine($"➡️  Mã giao dịch (TxnRef): {txnRef}");
@@ -118,10 +120,10 @@ namespace PharmaDistiPro.Controllers
 
 
 
-                    var UrlFail = $"http://localhost:5173/payment/failed?orderId={txnRef}";
+                    var UrlFail = $"{baseUrl}/payment/failed?orderId={txnRef}";
                    
 
-                    return Redirect($"http://localhost:5173/payment/failed?orderId={txnRef}");
+                    return Redirect($"{baseUrl}/payment/failed?orderId={txnRef}");
                 }
                 catch (Exception ex)
                 {
