@@ -102,7 +102,7 @@ namespace PharmaDistiPro.Controllers
                     var transactionNo = Request.Query["vnp_TransactionNo"];
                     var txnRef = Request.Query["vnp_TxnRef"];
                     var resultDescription = $"{paymentResult.PaymentResponse.Description}. {paymentResult.TransactionStatus.Description}.";
-                    var baseUrl = "http://localhost:5173"; // URL frontend public của bạn
+                    var baseUrl = "https://hrzx8r35-5173.asse.devtunnels.ms"; // URL frontend public của bạn
 
 
                     if (paymentResult.IsSuccess)
